@@ -17,7 +17,7 @@ export default function Home() {
 
       {/* Title */}
       <h1 className="text-4xl font-bold mb-3 text-[#fcefc2]">
-        BorderlessPlug 🌍⚡
+        BorderlessPlug 
       </h1>
 
       {/* Subtitle */}
