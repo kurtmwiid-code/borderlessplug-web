@@ -25,7 +25,7 @@ export default function BuildLinkedInPage() {
       </div>
 
       <a
-        href="https://wa.me/1234567890?text=Hi%20BorderlessPlug%2C%20I%27m%20interested%20in%20rebuilding%20my%20LinkedIn%20profile"
+        href="https://wa.me/+27844936238?text=Hi%20BorderlessPlug%2C%20I%27m%20interested%20in%20rebuilding%20my%20LinkedIn%20profile"
         
         target="_blank"
         rel="noopener noreferrer"
