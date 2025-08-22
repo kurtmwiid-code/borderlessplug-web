@@ -6,7 +6,7 @@ const categories = [
   { name: "Virtual Assistant", slug: "virtual-assistant" },
   { name: "HR", slug: "hr" },
   { name: "Operations", slug: "operations" },
-  { name: "I.T", slug: "I.T." },
+  { name: "I.T", slug: "i.t." },
 ];
 
 export default function RemoteJobsPage() {
