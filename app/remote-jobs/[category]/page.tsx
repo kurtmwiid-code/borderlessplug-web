@@ -10,6 +10,15 @@ type Job = {
   category: string;
 };
 
+// ✅ Helper to normalize categories
+function slugifyCategory(cat: string): string {
+  return cat
+    .toLowerCase()
+    .replace(/\./g, "") // remove dots (I.T → it)
+    .replace(/\s+/g, "-") // spaces → dashes
+    .trim();
+}
+
 export default function CategoryJobsPage() {
   const params = useParams();
   const categoryParam = params?.category;
@@ -29,7 +38,7 @@ export default function CategoryJobsPage() {
           "https://api.sheety.co/6ed518bf953502dad67bbabac4d211b6/remoteJobs/sheet1"
         );
         const data = await res.json();
-        setJobs(data.sheet1);
+        setJobs(data.sheet1 || []); // ensure array fallback
       } catch (error) {
         console.error("Error fetching jobs:", error);
       } finally {
@@ -39,15 +48,17 @@ export default function CategoryJobsPage() {
     fetchJobs();
   }, []);
 
-  // Format category nicely (capitalize & replace dash with space)
+  // Format category nicely for display
   const formattedCategory =
     category.length > 0
       ? category.charAt(0).toUpperCase() + category.slice(1).replace("-", " ")
       : "";
 
-  const filteredJobs = jobs.filter(
-    (job) => job.category.toLowerCase().replace(/\s+/g, "-") === category
-  );
+  // ✅ Use slugify for matching
+  const filteredJobs = jobs.filter((job) => {
+    if (!job.category) return false;
+    return slugifyCategory(job.category) === slugifyCategory(category);
+  });
 
   return (
     <div className="max-w-3xl mx-auto space-y-8 p-6">
